@@ -100,7 +100,7 @@ table a:not([class]) {
   --waline-white: #000;
   --waline-light-grey: #666;
   --waline-dark-grey: #999;
-  --waline-color: #fff;
+  /* --waline-color: #fff; */
   --waline-bgcolor: var(--block);
   --waline-bgcolor-light: #272727;
   --waline-border-color: #333;

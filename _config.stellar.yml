@@ -202,7 +202,7 @@ comments:
   # https://waline.js.org/
   waline:
     # js: /assets/js/waline.js # https://unpkg.com/@waline/client@2.14.1/dist/waline.js
-    css: https://unpkg.com/@waline/client@2.14.1/dist/waline.css
+    css: /assets/css/waline.css
     # Waline server address url, you should set this to your own link
     serverURL: https://waline.itangqiao.top
     # If false, comment count will only be displayed in post page, not in home page
