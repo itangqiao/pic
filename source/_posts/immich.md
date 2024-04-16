@@ -50,6 +50,8 @@ iCloud + immich + 百度云
 
 ![image](https://res.craft.do/user/full/db4bcc1c-4b57-b6c6-3b04-c5f8d3964559/doc/C77EEC4A-54A3-470F-9972-CD7BA65FBB31/387807AF-F305-40BD-B6FB-4267B61081E7_2/3y8lKJHRVPWlXNtWsbHYdqTBTNJpGPQyC77CmWJR5rUz/Image.png)
 
+
+
 二、开始部署
 
 我是在portioner里部署的，这个docker管理很好用。
@@ -60,7 +62,9 @@ iCloud + immich + 百度云
 
 ![image](https://res.craft.do/user/full/db4bcc1c-4b57-b6c6-3b04-c5f8d3964559/doc/C77EEC4A-54A3-470F-9972-CD7BA65FBB31/9CCA1158-A355-4DB8-8C79-6559772E38DD_2/1xyPSXjBRLxVveMq5xJQSQpNLZ6uWlOvS8EiVCZLCcgz/Image.png)
 
-### 官方的 Docker Compose
+
+
+### 官方的 docker-compose
 
 ```yaml
 ---
@@ -114,7 +118,7 @@ services:
       - path_to_postgres:/var/lib/postgresql/data
 ```
 
-### 我修改过的
+### 我修改过的 docker-compose
 
 ```yaml
 ---
@@ -163,9 +167,11 @@ services:
       - /volume1/docker/immich/db:/var/lib/postgresql/data
 ```
 
-如果有出现问题： 建议看看这个简短的视频！
 
-[https://www.bilibili.com/video/BV1ro4y1K76U/](https://www.bilibili.com/video/BV1ro4y1K76U/)
+
+如果有出现问题： 建议看看这个简短的视频！[https://www.bilibili.com/video/BV1ro4y1K76U/](https://www.bilibili.com/video/BV1ro4y1K76U/)
+
+
 
 ## 目录介绍
 
@@ -186,33 +192,41 @@ services:
 - db
   数据库目录
 
+
+
 ## 备份恢复
 
 > 我发现备份这4个目录是可以恢复的, 但是如果里面的信息被破坏了就麻烦了，我就经历过 :(
 
 - 旧设备：
 
-  - 备份 immich下的4个子目录
+  - 备份 immich 下的4个子目录
 - 新设备：
 
-  - 先创建immich主目录， 再分别创建4个子目录
+  - 先创建 immich 主目录， 再分别创建4个子目录
   - 重新拉取镜像，创建容器，启动，页面打开成功！
     - 删除4个子目录，并把之前备份的4个目录拖进来
 
-你可能想问为什么要多次一举？ 主要是怕目录权限出现问题，官方建议不要手动创建db目录，以免读取不到immich数据库。我也不记得哪里出现了问题，即使权限拉满了，依旧识别不到immich数据库。恢复备份后来单独做过测验，证明是可行的。跟官方沟通过，记得在替换的时候把相关容器先关闭哦！
+你可能想问为什么要多次一举？ 主要是怕目录权限出现问题，官方建议不要手动创建 db 目录，以免读取不到 immich 数据库。我也不记得哪里出现了问题，即使权限拉满了，依旧识别不到 immich 数据库。恢复备份后来单独做过测验，证明是可行的。跟官方沟通过，记得在替换的时候把相关容器先关闭哦！
+
+
 
 ## 注意事项
 
 之前上传过的图片，即便拖拽到文件目录也会再上传一遍，因为是根据数据库信息做的校验，所以相同的会存有两份。所以只能通过官方的上传入口
 
-immich 缺点：
+
+
+**immich 缺点：**
 
 - 稳定性
-  - 开源团队维护和疑问解答都非常积极，项目发展前景很好。但是只建议将immich只作为辅助工具，服务蹦了也不怕。
+  - 开源团队维护和疑问解答都非常积极，项目发展前景很好。但是只建议将 immich 只作为辅助工具，服务蹦了也不怕。
 - 同步
   - 因为是依赖数据库存储和加载内容，所以你直接将文件拖进 `library/admin/` 里面，它是不会处理的。你必须通过上传，系统会自动产生这张图片的相关信息。
 - 最坏的情况出现
-  - 当镜像无法启动，启动后无法进入管理页面，出现502等情况；不要着急， 建议直接去官方issues里搜索，或创建issue提问。
+  - 当镜像无法启动，启动后无法进入管理页面，出现 502 等情况；不要着急， 建议直接去官方 issues 里搜索，或创建 issue 提问。
+
+
 
 下期预告：
 
