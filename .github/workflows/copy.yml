@@ -23,7 +23,11 @@ jobs:
       
       - name: Sync .webp files to destination repository
         run: |
-          cp -r source/**/*.webp itangqiao/pic/blog
+          pwd
+          echo ----
+          ls 
+          echo ----
+          cp -r * itangqiao/pic/blog
         working-directory: ${{ github.workspace }}
 
       # - name: Sync changes
