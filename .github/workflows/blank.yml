@@ -41,9 +41,9 @@ jobs:
           git commit -m "Add compressed WebP images"
           git push https://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@github.com/itangqiao/pic.git main
 
-      # - name: Commit and push changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: itangqiao
-      #     author_email: 173467694@qq.com
-      #     message: Convert images to WebP
+        # - name: Commit and push changes
+        #   uses: EndBug/add-and-commit@v9
+        #   with:
+        #     author_name: itangqiao
+        #     author_email: 173467694@qq.com
+        #     message: Convert images to WebP
