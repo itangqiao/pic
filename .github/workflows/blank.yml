@@ -31,15 +31,15 @@ jobs:
             fi
           done
 
-      - name: Move WebP files
-        run: |
-          mv images/*.webp blog/
-          git config --local user.email "173467694@qq.com"
-          git config --local user.name "itangqiao"
-          git checkout main
-          git add blog/*.webp
-          git commit -m "Add compressed WebP images"
-          git push https://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@github.com/itangqiao/pic.git main
+      # - name: Move WebP files
+      #   run: |
+      #     mv /source/assets/images/*.webp blog/
+      #     git config --local user.email "173467694@qq.com"
+      #     git config --local user.name "itangqiao"
+      #     git checkout main
+      #     git add blog/*.webp
+      #     git commit -m "Add compressed WebP images"
+      #     git push https://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@github.com/itangqiao/pic.git main
 
         # - name: Commit and push changes
         #   uses: EndBug/add-and-commit@v9
