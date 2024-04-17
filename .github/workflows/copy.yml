@@ -18,7 +18,7 @@ jobs:
       - name: Checkout destination repository
         uses: actions/checkout@v2  # 检出目标仓库
         with:
-          repository: <itangqiao>/<pic>  # 目标仓库的用户名和仓库名
+          repository: itangqiao/pic  # 目标仓库的用户名和仓库名
           ref: main  # 手动指定目标仓库的默认分支为 main
 
       - name: Commit and push changes
