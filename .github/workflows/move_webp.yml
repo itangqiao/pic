@@ -18,10 +18,10 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.TOKEN }}
       run: |
         # 设置目标仓库
-        git remote add target https://github.com/itangqiao/pic/blog
+        git remote add target https://github.com/itangqiao/pic
         
         # 移动 source/assets/images/*.webp 文件到目标仓库
-        git mv source/assets/images/*.webp target/
+        git mv source/assets/images/*.webp target/blog/
         
         # 提交并推送到目标仓库
         git config user.name "GitHub Actions"
