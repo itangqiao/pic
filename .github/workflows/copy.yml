@@ -21,10 +21,18 @@ jobs:
           repository: itangqiao/pic  # 目标仓库的用户名和仓库名
           ref: main  # 手动指定目标仓库的默认分支为 main
 
-      - name: Commit and push changes
+      - name: Sync changes
         run: |
           git config --local user.email "173467694@qq.com"
           git config --local user.name "itangqiao"
-          git add **/images/*.webp
+          
+          # 确认一下工作目录和文件路径
+          pwd
+          ls source/assets/images/*.webp
+          
+          # 添加并提交 WebP 图片文件
+          git add source/assets/images/*.webp
           git commit -m "Sync changes"
-          git push origin main  # 推送到目标仓库的主分支（可以根据实际情况修改）
+          
+          # 推送到目标仓库
+          git push origin main
