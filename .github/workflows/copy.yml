@@ -24,10 +24,13 @@ jobs:
       - name: Sync .webp files to destination repository
         run: |
           pwd
-          echo ----
-          ls 
-          echo ----
-          cp -r * itangqiao/pic/blog
+          echo "---------- Current Repository ----------"
+          ls source/assets/images/*.webp
+          echo "---------- Destination Repository ----------"
+          cd itangqiao/pic
+          ls blog/images/*.webp
+          cd ../..
+          cp -r source/assets/images/*.webp itangqiao/pic/blog
         working-directory: ${{ github.workspace }}
 
       # - name: Sync changes
