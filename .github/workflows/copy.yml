@@ -25,14 +25,10 @@ jobs:
         run: |
           pwd
           echo "---------- Current Repository ----------"
-          ls source/assets/images/*.webp
+          cd ./
+          ls
           echo "---------- Destination Repository ----------"
-          cd itangqiao/pic
-          ls blog/images/*.webp
-          cd ../..
-          cp -r source/assets/images/*.webp itangqiao/pic/blog
-        working-directory: ${{ github.workspace }}
-
+          
       # - name: Sync changes
       #   run: |
       #     git config --local user.email "173467694@qq.com"
