@@ -1,9 +1,0 @@
-name: Obsidian
-title: Obsidian
-description: Obsidian 的折腾之旅
-tags: 笔记
-icon: /assets/svgs/obsidian-icon.svg
-base_dir: /wiki/obsidian/
-toc:
-- index
-license: true

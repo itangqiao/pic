@@ -1,9 +1,0 @@
-name: web
-title: Web
-description: HTML CSS JavaScript TypeScript React Vue Node.js
-tags: 前端
-icon: /assets/images/www.webp
-base_dir: /wiki/web/
-toc:
-- index
-license: true

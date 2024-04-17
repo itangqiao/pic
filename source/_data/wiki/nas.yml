@@ -1,9 +1,0 @@
-name: NAS
-title: NAS
-description: NAS的基本使用和应用搭配
-tags: 服务器
-icon: /assets/images/nas-icon.webp
-base_dir: /wiki/nas/
-toc:
-- index
-license: true
