@@ -34,5 +34,5 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           author_name: itangqiao
-          author_email: itangqiao@gmail.com
+          author_email: 173467694@qq.com
           message: Convert images to WebP
