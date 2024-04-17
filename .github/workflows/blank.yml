@@ -23,38 +23,23 @@ jobs:
 
       - name: Convert images to WebP
         run: |
-          outputfile="converted_files.txt"
-          touch "$outputfile"
           for file in $(find . -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \)); do
-            webp_file="$(dirname "$file")/$(basename "$file" .${file##*.}).webp"
+            webp_file="${file%.*}.webp"
             if [ ! -f "$webp_file" ]; then
               output_dir=$(dirname "$file")
               npx @squoosh/cli --webp '{"quality":75,"target_size":0,"target_PSNR":0,"method":4,"sns_strength":50,"filter_strength":60,"filter_sharpness":0,"filter_type":1,"partitions":0,"segments":4,"pass":1,"show_compressed":0,"preprocessing":0,"autofilter":0,"partition_limit":0,"alpha_compression":1,"alpha_filtering":1,"alpha_quality":100,"lossless":0,"exact":0,"image_hint":0,"emulate_jpeg_size":0,"thread_level":0,"low_memory":0,"near_lossless":100,"use_delta_palette":0,"use_sharp_yuv":0}' -d "$output_dir" "$file"
-              echo "$file" >> "$outputfile"
             fi
           done
-          
-          - name: Upload converted files list
-            uses: actions/upload-artifact@v3
-            with:
-              name: converted-files-list
-              path: converted_files.txt
+        - name: Rename and move converted images to CDN directory
+          run: |
+            find . -type f \( -name "*.jpg.webp" -o -name "*.jpeg.webp" -o -name "*.png.webp" \) | while read file; do
+              new_file=$(echo "$file" | sed 's|\.\./assets|https://gcore.jsdelivr.net/gh/itangqiao/blog-hexo-stellar@main/source/assets|g')
+              sed -i "s|$file|$new_file|g" ./**/*
+            done
 
-          - name: Download converted files list
-            uses: actions/download-artifact@v3
-            with:
-              name: converted-files-list
-
-          - name: Replace image paths
-            run: |
-              sed -i 's#\.\./assets/images/#https://gcore.jsdelivr.net/gh/itangqiao/blog-hexo-stellar@main/assets/images/#g' $(cat converted_files.txt)
-              git add .
-              git commit -m "Update image paths"
-              git push
-
-      # - name: Commit and push changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: itangqiao
-      #     author_email: 173467694@qq.com
-      #     message: Convert images to WebP
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: itangqiao
+          author_email: 173467694@qq.com
+          message: Convert images to WebP
