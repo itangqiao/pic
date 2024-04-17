@@ -33,7 +33,7 @@ jobs:
 
       - name: Replace image paths
         run: |
-          sed -i 's/\.\.\\/assets\/images\//https:\/\/gcore.jsdelivr.net\/gh\/itangqiao\/blog-hexo-stellar@main\/assets\/images\//g' $(cat converted_files.txt)
+          sed -i 's#\.\./assets/images/#https://gcore.jsdelivr.net/gh/itangqiao/blog-hexo-stellar@main/assets/images/#g' $(cat converted_files.txt)
           git add .
           git commit -m "Update image paths"
           git push
