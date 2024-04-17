@@ -31,7 +31,14 @@ jobs:
               sed -i 's#\.\./assets/images/#https://gcore.jsdelivr.net/gh/itangqiao/blog-hexo-stellar@main/assets/images/#g' "$webp_file"
             fi
           done
-
+      - name: Check if converted files list exists
+        id: check_files
+        run: |
+          if [ -f converted_files.txt ]; then
+            echo "::set-output name=files_exist::true"
+          else
+            echo "::set-output name=files_exist::false"
+          fi
       - name: Replace image paths
         run: |
           sed -i 's#\.\./assets/images/#https://gcore.jsdelivr.net/gh/itangqiao/blog-hexo-stellar@main/assets/images/#g' $(cat converted_files.txt)
