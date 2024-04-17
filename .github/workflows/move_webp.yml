@@ -21,5 +21,5 @@ jobs:
         git remote add target https://github.com/itangqiao/pic
         
         # 提交并推送到目标仓库
-        git add /source/assets/images/*.webp
+        git add . **/images/*.webp   
         git push -f target main
