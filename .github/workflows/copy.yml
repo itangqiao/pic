@@ -20,28 +20,24 @@ jobs:
         with:
           repository: itangqiao/pic  # 目标仓库的用户名和仓库名
           ref: main  # 手动指定目标仓库的默认分支为 main
-
-      - name: Sync changes
+      
+      - name: Sync .webp files to destination repository
         run: |
-          git config --local user.email "173467694@qq.com"
-          git config --local user.name "itangqiao"
+          cp -r source/**/*.webp itangqiao/pic/blog
+        working-directory: ${{ github.workspace }}
+
+      # - name: Sync changes
+      #   run: |
+      #     git config --local user.email "173467694@qq.com"
+      #     git config --local user.name "itangqiao"
           
-          # 确认一下工作目录和文件路径
-          pwd
-          ls
-          ls source
-          ls source/assets
-          ls /home/runner/work/blog-hexo-stellar/blog-hexo-stellar
-          ls /home/runner/work/blog-hexo-stellar/blog-hexo-stellar/source
-          ls /home/runner/work/blog-hexo-stellar/blog-hexo-stellar/source/assets
-          ls /home/runner/work/blog-hexo-stellar/blog-hexo-stellar/source/assets/images
-          ls /home/runner/work/blog-hexo-stellar/blog-hexo-stellar/source/assets/images/*.webp
-          ls ./source/assets/images/
-          ls **/*.webp
+      #     # 确认一下工作目录和文件路径
+      #     pwd
+      #     ls
           
-          # 添加并提交 WebP 图片文件
-          git add source/assets/images/*.webp
-          git commit -m "Sync changes"
+      #     # 添加并提交 WebP 图片文件
+      #     git add .
+      #     git commit -m "Sync changes"
           
-          # 推送到目标仓库
-          git push origin main
+      #     # 推送到目标仓库
+      #     git push origin main
